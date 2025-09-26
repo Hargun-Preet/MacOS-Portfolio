@@ -1,8 +1,69 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --dock-background: rgba(255, 255, 255, 0.25)
+  --pattern-fg: #d4d4d4;
+}
+
+/* .light {
+  --background: #EAEAEA;
+  --foreground: black;
+  --dock-background: rgba(255, 255, 255, 0.5);
+} */
+
+@layer base {
+  /* 1. Set the default macOS cursor for the entire application
+  html, body, *, ::before, ::after {
+    cursor: url('/assets/cursors/cursor-default.png'), auto;
+  }
+
+  /* 2. Set the pointer hand for interactive elements */
+  /* a, button, [role="button"], input[type="submit"], input[type="reset"] {
+    cursor: url('/assets/cursors/cursor-pointer.png'), pointer;
+  } */
+  
+  /* 3. NEW: Set the text select cursor for text and input elements */
+  /* p, h1, h2, h3, h4, h5, h6, span, li, blockquote,
+  input[type="text"],
+  input[type="search"],
+  input[type="email"],
+  input[type="password"],
+  textarea {
+    cursor: url('/assets/cursors/cursor-text.png') 2 10, text;
+  } */
+
+  /* 4. Define the grab cursors for draggable items */
+  /* .cursor-grab {
+    cursor: url('/assets/cursors/cursor-grab.png') 10 10, grab;
+  }
+  .cursor-grabbing {
+    cursor: url('/assets/cursors/cursor-grab.png') 10 10, grabbing;
+  } */ 
+   :root {
+    --background: #ffffff;
+    --foreground: #171717;
+    --dock-background: rgba(255, 255, 255, 0.25)
+
+  }
+
+  html {
+    --pattern-fg: #eceaea;
+  }
+
+  html.dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 0 0% 100%;
+    --pattern-fg: #535353;
+  }
+}
+
+@layer base {
+  * {
+    @apply transition-colors duration-200;
+  }
 }
 
 @theme inline {
@@ -22,5 +83,341 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  cursor: url("/assets/cursors/cursor-default.png"), auto;
 }
+
+a, button {
+  cursor: url('/assets/cursors/cursor-pointer.png') 8 8, pointer;
+}
+
+.cursor-grab {
+  cursor: url('/assets/cursors/cursor-grab.png') 8 8, grab;
+}
+
+.cursor-grab:active {
+  cursor: url('/assets/cursors/cursor-grabbing.png') 0 0, grabbing;
+}
+
+/* input {
+  cursor: url('/assets/cursors/cursor-text.png') 8 8, text;
+} */
+
+/* Genie Effect Styles - Exact match to original jQuery implementation */
+.genie,
+.genie-snapshot-container {
+  position: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 10000;
+  pointer-events: none;
+}
+
+.genie .genie-step {
+  background-repeat: no-repeat;
+  background-image: inherit;
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Expand animations - match original timing exactly */
+.genie.expand .genie-step,
+.genie-snapshot-container.expand .genie-step {
+  -moz-transition: background-position 800ms ease-in-out;
+  -webkit-transition: background-position 800ms ease-in-out;
+  -o-transition: background-position 800ms ease-in-out;
+  -ms-transition: background-position 800ms ease-in-out;
+  transition: background-position 800ms ease-in-out;
+}
+
+/* Collapse animations - match original timing exactly */
+.genie.collapse .genie-step,
+.genie-snapshot-container.collapse .genie-step {
+  -moz-transition: all 300ms ease-in-out;
+  -webkit-transition: all 300ms ease-in-out;
+  -o-transition: all 300ms ease-in-out;
+  -ms-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+}
+
+/* Pace change for second phase - exact original implementation */
+.genie.collapse.change-pace .genie-step,
+.genie-snapshot-container.collapse.change-pace .genie-step {
+  -moz-transition: background-position 800ms ease-in-out;
+  -webkit-transition: background-position 800ms ease-in-out;
+  -o-transition: background-position 800ms ease-in-out;
+  -ms-transition: background-position 800ms ease-in-out;
+  transition: background-position 800ms ease-in-out;
+}
+
+.genie.expand.change-pace .genie-step,
+.genie-snapshot-container.expand.change-pace .genie-step {
+  -moz-transition: all 300ms ease-in-out;
+  -webkit-transition: all 300ms ease-in-out;
+  -o-transition: all 300ms ease-in-out;
+  -ms-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+}
+
+/* --- Custom Range Slider Styles --- */
+
+/* For Webkit browsers (Chrome, Safari, Edge) */
+.custom-range::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Remove default styling */
+  appearance: none;
+  width: 16px; /* Set your desired width */
+  height: 16px; /* Set your desired height */
+  background-color: #ffffff; /* This is a nice blue color */
+  border: 1px solid #9ca3af; 
+  border-radius: 9999px; /* Make it a circle */
+  cursor: pointer;
+   /* Center the thumb vertically on the track */
+}
+
+/* For Firefox */
+.custom-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background-color: #ffffff; /* Same blue color */
+  border-radius: 9999px;
+  border: 1px solid #9ca3af; 
+  cursor: pointer;
+  border: none; /* Firefox might add a border */
+}
+
+.my-gray-icon {
+  /* This filter combination will turn black to a medium-dark gray */
+  filter: brightness(0.6) grayscale(1); 
+  /*
+    - brightness(0.6) makes black (0% brightness) into a dark gray (60% brightness).
+    - grayscale(1) ensures it's purely grayscale, removing any lingering color.
+  */
+}
+
+.font-fira-code {
+  font-family: "Fira Code", monospace;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.ascii-art {
+  font-size: 4px;   /* smaller text */
+  line-height: 4px; /* tighter vertical spacing */
+}
+
+@layer utilities {
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 1s ease-in-out;
+  }
+}
+
+.content-with-stripes {
+  position: relative;
+}
+
+.content-with-stripes::before,
+.content-with-stripes::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4rem; /* Controls the width of the stripe */
+  
+  /* This is YOUR diagonal pattern */
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(0, 0, 0, 0.1),       /* Light mode line color */
+    rgba(0, 0, 0, 0.1) 1px,
+    transparent 1px,
+    transparent 6px
+  );
+  
+  
+}
+
+/* Dark mode version of the lines */
+.dark .content-with-stripes::before,
+.dark .content-with-stripes::after {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.05), /* Dark mode line color */
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 1px,
+    transparent 6px
+  );
+}
+
+/* Position the stripes */
+.content-with-stripes::before {
+  right: 100%;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+.dark .content-with-stripes::before {
+  border-color: rgba(255, 255, 255, 0.05); 
+}
+
+
+.content-with-stripes::after {
+  left: 100%;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dark .content-with-stripes::after {
+  border-color: rgba(255, 255, 255, 0.05); 
+}
+
+.toolbar-scroll {
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+.toolbar-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+.toolbar-scroll::-webkit-scrollbar-thumb {
+  background-color: oklch(0.922 0 0);
+  border-radius: 999px;
+}
+
+/* Shared tint for icons and active tools */
+.notes-tint {
+  color: var(--notes-yellow);
+}
+.notes-tool[data-state="on"],
+.notes-tool:hover {
+  color: var(--notes-yellow);
+}
+
+/* TipTap content styles to fix headings, lists, checklists, blockquotes, and code blocks */
+.tiptap {
+  color: var(--foreground);
+  line-height: 1.6;
+}
+
+.tiptap h1,
+.tiptap h2,
+.tiptap h3 {
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0.75rem 0 0.5rem;
+}
+.tiptap h1 {
+  font-size: 1.625rem;
+} /* ~26px */
+.tiptap h2 {
+  font-size: 1.375rem;
+} /* ~22px */
+.tiptap h3 {
+  font-size: 1.125rem;
+} /* ~18px */
+
+.tiptap p {
+  margin: 0.5rem 0;
+}
+
+.tiptap ul,
+.tiptap ol {
+  padding-left: 1.25rem;
+  margin: 0.5rem 0 0.5rem 0;
+}
+.tiptap ul {
+  list-style: disc;
+}
+.tiptap ol {
+  list-style: decimal;
+}
+.tiptap li {
+  margin: 0.25rem 0;
+}
+
+/* Checklists */
+.tiptap ul.task-list {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+.tiptap ul.task-list li {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  margin: 0.25rem 0;
+}
+.tiptap ul.task-list li > label {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 0.2rem; /* visually centers checkbox */
+}
+.tiptap ul.task-list li > div {
+  flex: 1;
+}
+.tiptap ul.task-list input[type="checkbox"] {
+  accent-color: var(--notes-yellow);
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+}
+
+/* Blockquote */
+.tiptap blockquote {
+  border-left: 3px solid oklch(0.922 0 0);
+  padding-left: 0.75rem;
+  color: oklch(0.556 0 0);
+  margin: 0.75rem 0;
+}
+
+/* Inline code and code blocks */
+.tiptap code {
+  font-family: var(--font-mono);
+  background: oklch(0.97 0 0);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+}
+.tiptap pre {
+  background: oklch(0.97 0 0);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  overflow-x: auto;
+  margin: 0.75rem 0;
+}
+.tiptap pre code {
+  background: transparent;
+  padding: 0;
+}
+
+/* Style highlight (annotations) to use Notes yellow */
+.tiptap mark,
+.tiptap .hl,
+.tiptap mark[data-type="highlight"] {
+  background: color-mix(in oklch, var(--notes-yellow) 65%, white);
+  color: inherit;
+  border-radius: 0.15rem;
+  padding: 0 0.05rem;
+}
+
+/* Links */
+.tiptap a {
+  color: var(--notes-yellow);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Images */
+.tiptap img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+/* Alignment */
+.tiptap [style*="text-align:center"] {
+  margin-left: auto;
+  margin-right: auto;
+}
+
