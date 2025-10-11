@@ -8,7 +8,7 @@ const kamikazeTechStack: TechItem[] = [
   { name: 'React', iconSrc: '/assets/Tech-Icons/react.png' },
   { name: 'Redux', iconSrc: '/assets/Tech-Icons/Redux.png' },
   { name: 'Node.js', iconSrc: '/assets/Tech-Icons/node.png' },
-  { name: 'Express', iconSrc: '/assets/Tech-Icons/express.png' },
+  { name: 'Express', iconSrc: '/assets/Tech-Icons/Express.png' },
   { name: 'MongoDB', iconSrc: '/assets/Tech-Icons/mongo.png' },
   { name: 'Tailwind CSS', iconSrc: '/assets/Tech-Icons/tailwind.svg' },
   { name: 'PayPal', iconSrc: '/assets/Tech-Icons/paypal.png' },
