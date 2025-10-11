@@ -94,6 +94,7 @@ export const MysticBrawlContent = ({ isMaximized }: { isMaximized?: boolean }) =
           >
             <video 
               src="/assets/demos/mb-demo.mp4"
+              poster="/assets/demos/mb-poster.png"
               autoPlay
               loop
               muted

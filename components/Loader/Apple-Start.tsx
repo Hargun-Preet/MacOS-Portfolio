@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { AppleHelloEnglishEffect } from './Apple-Hello-Effect'; // Ensure this path is correct
 import { CircleArrowRight } from 'lucide-react';
+import Image from 'next/image';
 
 interface StartupLoaderProps {
   onFinished: () => void;
@@ -72,7 +73,14 @@ const StartupLoader: React.FC<StartupLoaderProps> = ({ onFinished }) => {
       <div className="relative z-10 flex h-full w-full items-center justify-center">
         {!showHello ? (
           <div className="flex flex-col items-center gap-16">
-            <img className="w-24 h-24" src='/assets/Icons/logo-white.png' alt='apple-logo' />
+            {/* <img className="w-24 h-24" src='/assets/icons/logo-white.png' alt='apple-logo' /> */}
+            <Image
+              className="w-24 h-24" // This still works for styling!
+              src="/assets/icons/logo-white.png"
+              alt="apple-logo"
+              width={150}  // The ACTUAL width of the source file
+              height={150} // The ACTUAL height of the source file
+            />
             <div className="w-48 h-1.5 bg-gray-700 rounded-full overflow-hidden">
               <div
                 className="h-full bg-white"

@@ -153,7 +153,7 @@ export const FinderWindowContent = ({ openWindow, isMaximized }: { openWindow: (
               })}
             </div>
           ) : (
-            <div className="flex flex-col text-sm dark:border-neutral-600">
+            <div className="flex flex-col text-sm border-neutral-200 dark:border-neutral-600">
               {currentItems.map((item: File | Folder) => {
                 const isSpecialProject = specialProjectIds.has(item.id);
                 return (

@@ -95,6 +95,7 @@ export const KamikazeContent = ({ isMaximized }: { isMaximized?: boolean }) => {
           >
             <video 
               src="/assets/demos/k-demo.mp4"
+              poster="/assets/demos/k-poster.png"
               autoPlay
               loop
               muted

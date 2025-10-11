@@ -92,6 +92,7 @@ export const hir0Content = ({ isMaximized }: { isMaximized?: boolean }) => {
           >
             <video 
               src="/assets/demos/h-demo.mp4"
+              poster="/assets/demos/h-poster.png"
               autoPlay
               loop
               muted

@@ -94,6 +94,7 @@ export const InquateContent = ({ isMaximized }: { isMaximized?: boolean }) => {
           >
             <video 
               src="/assets/demos/i-demo.mp4"
+              poster="/assets/demos/i-poster.png"
               autoPlay
               loop
               muted

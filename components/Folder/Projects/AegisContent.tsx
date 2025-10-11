@@ -94,6 +94,7 @@ export const AegisContent = ({ isMaximized }: { isMaximized?: boolean }) => {
           >
             <video 
               src="/assets/demos/a-demo.mp4"
+              poster="/assets/demos/a-poster.png"
               autoPlay
               loop
               muted

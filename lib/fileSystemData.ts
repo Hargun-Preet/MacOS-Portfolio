@@ -26,14 +26,14 @@ export const fileSystem: (File | Folder)[] = [
       {
         id: 'Google Chrome',
         name: 'Chrome.app',
-        icon: '/assets/Icons/Chrome.png',
+        icon: '/assets/Icons/chrome.png',
         type: 'file',
         opens: 'Google Chrome',
       },
       {
         id: 'VSCode',
         name: 'VS Code.app',
-        icon: '/assets/Icons/vsCode.png',
+        icon: '/assets/Icons/vscode.png',
         type: 'file',
         opens: 'VS Code',
       },

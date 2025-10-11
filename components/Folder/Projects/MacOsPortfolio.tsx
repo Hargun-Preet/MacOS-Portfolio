@@ -109,6 +109,7 @@ export const MacOSPortfolio = ({ isMaximized }: { isMaximized?: boolean }) => {
           >
             <video 
               src="/assets/demos/mac-demo.mp4"
+              poster="/assets/demos/m-poster.png" 
               autoPlay
               loop
               muted

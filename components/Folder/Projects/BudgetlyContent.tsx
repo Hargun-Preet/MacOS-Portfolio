@@ -96,6 +96,7 @@ export const BudgetlyContent = ({ isMaximized }: { isMaximized?: boolean }) => {
           >
             <video 
               src="/assets/demos/b-demo.mp4"
+              poster="/assets/demos/b-poster.png"
               autoPlay
               loop
               muted

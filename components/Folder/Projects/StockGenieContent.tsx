@@ -95,6 +95,7 @@ export const StockGenieContent = ({ isMaximized }: { isMaximized?: boolean }) =>
           >
             <video 
               src="/assets/demos/s-demo.mp4"
+              poster="/assets/demos/s-poster.png"
               autoPlay
               loop
               muted
