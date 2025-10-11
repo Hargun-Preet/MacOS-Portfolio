@@ -52,7 +52,7 @@ const Window = forwardRef<HTMLDivElement, WindowProps>(
 
     const getIconPath = (buttonName: string) => {
       const state = pressedButton === buttonName ? 'press' : hoveredButton === buttonName ? 'hover' : 'normal';
-      return `/assets/traffic-lights/${buttonName}-${state}.svg`;
+      return `/assets/Traffic-Lights/${buttonName}-${state}.svg`;
     };
 
     // Combine refs

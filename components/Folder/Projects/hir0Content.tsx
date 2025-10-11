@@ -5,10 +5,10 @@ import { AnimatePresence, motion } from 'motion/react';
 import { InteractiveHoverButton } from '@/components/ui/RainbowButton';
 
 const hir0TechStack: TechItem[] = [
-  { name: 'JavaScript', iconSrc: '/assets/tech-icons/js.png' },
-  { name: 'HTML5', iconSrc: '/assets/tech-icons/html.png' },
-  { name: 'CSS3', iconSrc: '/assets/tech-icons/css.png' },
-  { name: 'Vercel', iconSrc: '/assets/tech-icons/vercel.png' },
+  { name: 'JavaScript', iconSrc: '/assets/Tech-Icons/js.png' },
+  { name: 'HTML5', iconSrc: '/assets/Tech-Icons/html.png' },
+  { name: 'CSS3', iconSrc: '/assets/Tech-Icons/css.png' },
+  { name: 'Vercel', iconSrc: '/assets/Tech-Icons/vercel.png' },
 ];
 
 const galleryImages = [

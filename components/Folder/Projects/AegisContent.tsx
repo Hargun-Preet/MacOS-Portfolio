@@ -5,12 +5,12 @@ import { AnimatePresence, motion } from 'motion/react';
 import { InteractiveHoverButton } from '@/components/ui/RainbowButton';
 
 const aegisTechStack: TechItem[] = [
-  { name: 'React', iconSrc: '/assets/tech-icons/react.png' },
-  { name: 'TypeScript', iconSrc: '/assets/tech-icons/typescript.svg' },
-  { name: 'Tailwind CSS', iconSrc: '/assets/tech-icons/tailwind.svg' },
-  { name: 'Supabase', iconSrc: '/assets/tech-icons/supabase.svg' },
-  { name: 'PostgreSQL', iconSrc: '/assets/tech-icons/postgres.png' },
-  { name: 'Web Crypto API', iconSrc: '/assets/tech-icons/wc.png' },
+  { name: 'React', iconSrc: '/assets/Tech-Icons/react.png' },
+  { name: 'TypeScript', iconSrc: '/assets/Tech-Icons/typescript.svg' },
+  { name: 'Tailwind CSS', iconSrc: '/assets/Tech-Icons/tailwind.svg' },
+  { name: 'Supabase', iconSrc: '/assets/Tech-Icons/supabase.svg' },
+  { name: 'PostgreSQL', iconSrc: '/assets/Tech-Icons/postgres.png' },
+  { name: 'Web Crypto API', iconSrc: '/assets/Tech-Icons/wc.png' },
 ];
 
 const galleryImages = [

@@ -5,13 +5,13 @@ import { AnimatePresence, motion } from 'motion/react';
 import { InteractiveHoverButton } from '@/components/ui/RainbowButton';
 
 const stockGenieTechStack: TechItem[] = [
-  { name: 'Python', iconSrc: '/assets/tech-icons/python.png' },
-  { name: 'Streamlit', iconSrc: '/assets/tech-icons/streamlit.png' },
-  { name: 'TensorFlow', iconSrc: '/assets/tech-icons/tenserflow.png' },
-  { name: 'Keras', iconSrc: '/assets/tech-icons/keras.png' },
-  { name: 'Scikit-learn', iconSrc: '/assets/tech-icons/sl.png' },
-  { name: 'MongoDB', iconSrc: '/assets/tech-icons/mongo.png' },
-  { name: 'yFinance', iconSrc: '/assets/tech-icons/yahoo.png' },
+  { name: 'Python', iconSrc: '/assets/Tech-Icons/python.png' },
+  { name: 'Streamlit', iconSrc: '/assets/Tech-Icons/streamlit.png' },
+  { name: 'TensorFlow', iconSrc: '/assets/Tech-Icons/tenserflow.png' },
+  { name: 'Keras', iconSrc: '/assets/Tech-Icons/keras.png' },
+  { name: 'Scikit-learn', iconSrc: '/assets/Tech-Icons/sl.png' },
+  { name: 'MongoDB', iconSrc: '/assets/Tech-Icons/mongo.png' },
+  { name: 'yFinance', iconSrc: '/assets/Tech-Icons/yahoo.png' },
 ];
 
 const galleryImages = [

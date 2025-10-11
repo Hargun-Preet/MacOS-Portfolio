@@ -5,12 +5,12 @@ import { AnimatePresence, motion } from 'motion/react';
 import { InteractiveHoverButton } from '@/components/ui/RainbowButton';
 
 const mysticBrawlTechStack: TechItem[] = [
-  { name: 'JavaScript', iconSrc: '/assets/tech-icons/js.png' },
-  { name: 'HTML5 Canvas', iconSrc: '/assets/tech-icons/html.png' },
-  { name: 'Node.js', iconSrc: '/assets/tech-icons/node.png' },
-  { name: 'Socket.io', iconSrc: '/assets/tech-icons/socket.png' },
-  { name: 'Agora', iconSrc: '/assets/tech-icons/agora.png' },
-  { name: 'Railway', iconSrc: '/assets/tech-icons/railway.svg' },
+  { name: 'JavaScript', iconSrc: '/assets/Tech-Icons/js.png' },
+  { name: 'HTML5 Canvas', iconSrc: '/assets/Tech-Icons/html.png' },
+  { name: 'Node.js', iconSrc: '/assets/Tech-Icons/node.png' },
+  { name: 'Socket.io', iconSrc: '/assets/Tech-Icons/socket.png' },
+  { name: 'Agora', iconSrc: '/assets/Tech-Icons/agora.png' },
+  { name: 'Railway', iconSrc: '/assets/Tech-Icons/railway.svg' },
 ];
 
 const galleryImages = [

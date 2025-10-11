@@ -5,11 +5,11 @@ import { AnimatePresence, motion } from 'motion/react';
 import { InteractiveHoverButton } from '@/components/ui/RainbowButton';
 
 const macosTechStack: TechItem[] = [
-  { name: 'React', iconSrc: '/assets/tech-icons/react.png' },
-  { name: 'Typescript', iconSrc: '/assets/tech-icons/typescript.svg' },
-  { name: 'Next.js', iconSrc: '/assets/tech-icons/nextjs.svg' },
-  { name: 'Tailwind CSS', iconSrc: '/assets/tech-icons/tailwind.svg' },
-  { name: 'Motion', iconSrc: '/assets/tech-icons/motion.png' },
+  { name: 'React', iconSrc: '/assets/Tech-Icons/react.png' },
+  { name: 'Typescript', iconSrc: '/assets/Tech-Icons/typescript.svg' },
+  { name: 'Next.js', iconSrc: '/assets/Tech-Icons/nextjs.svg' },
+  { name: 'Tailwind CSS', iconSrc: '/assets/Tech-Icons/tailwind.svg' },
+  { name: 'Motion', iconSrc: '/assets/Tech-Icons/motion.png' },
 ];
 
 const galleryImages = [

@@ -5,14 +5,14 @@ import { AnimatePresence, motion } from 'motion/react';
 import { InteractiveHoverButton } from '@/components/ui/RainbowButton';
 
 const budgetlyTechStack: TechItem[] = [
-  { name: 'Next.js', iconSrc: '/assets/tech-icons/nextjs.svg' },
-  { name: 'React', iconSrc: '/assets/tech-icons/react.png' },
-  { name: 'TypeScript', iconSrc: '/assets/tech-icons/typescript.svg' },
-  { name: 'Tailwind CSS', iconSrc: '/assets/tech-icons/tailwind.svg' },
-  { name: 'PostgreSQL', iconSrc: '/assets/tech-icons/postgres.png' },
-  { name: 'Prisma', iconSrc: '/assets/tech-icons/prisma.png' },
-  { name: 'Gemini AI', iconSrc: '/assets/tech-icons/gemini.png' },
-  { name: 'TanStack Query', iconSrc: '/assets/tech-icons/tanstack.png' },
+  { name: 'Next.js', iconSrc: '/assets/Tech-Icons/nextjs.svg' },
+  { name: 'React', iconSrc: '/assets/Tech-Icons/react.png' },
+  { name: 'TypeScript', iconSrc: '/assets/Tech-Icons/typescript.svg' },
+  { name: 'Tailwind CSS', iconSrc: '/assets/Tech-Icons/tailwind.svg' },
+  { name: 'PostgreSQL', iconSrc: '/assets/Tech-Icons/postgres.png' },
+  { name: 'Prisma', iconSrc: '/assets/Tech-Icons/prisma.png' },
+  { name: 'Gemini AI', iconSrc: '/assets/Tech-Icons/gemini.png' },
+  { name: 'TanStack Query', iconSrc: '/assets/Tech-Icons/tanstack.png' },
 ];
 
 const galleryImages = [

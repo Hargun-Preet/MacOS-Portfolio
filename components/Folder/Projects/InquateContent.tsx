@@ -5,12 +5,12 @@ import { AnimatePresence, motion } from 'motion/react';
 import { InteractiveHoverButton } from '@/components/ui/RainbowButton';
 
 const inquateTechStack: TechItem[] = [
-  { name: 'React', iconSrc: '/assets/tech-icons/react.png' },
-  { name: 'TypeScript', iconSrc: '/assets/tech-icons/typescript.svg' },
-  { name: 'Python', iconSrc: '/assets/tech-icons/python.png' },
-  { name: 'FastAPI', iconSrc: '/assets/tech-icons/fastapi.png' },
-  { name: 'Gemini API', iconSrc: '/assets/tech-icons/gemini.png' },
-  { name: 'Tailwind CSS', iconSrc: '/assets/tech-icons/tailwind.svg' },
+  { name: 'React', iconSrc: '/assets/Tech-Icons/react.png' },
+  { name: 'TypeScript', iconSrc: '/assets/Tech-Icons/typescript.svg' },
+  { name: 'Python', iconSrc: '/assets/Tech-Icons/python.png' },
+  { name: 'FastAPI', iconSrc: '/assets/Tech-Icons/fastapi.png' },
+  { name: 'Gemini API', iconSrc: '/assets/Tech-Icons/gemini.png' },
+  { name: 'Tailwind CSS', iconSrc: '/assets/Tech-Icons/tailwind.svg' },
 ];
 
 const galleryImages = [

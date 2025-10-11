@@ -194,17 +194,17 @@ export function TrashWindowContent() {
                     className="flex flex-col items-center text-center p-1 rounded-lg cursor-pointer hover:bg-neutral-300/50 dark:hover:bg-neutral-600"
                   >
                     {item.type === 'jpg' && <img
-                      src="/assets/icons/jpg.png"
+                      src="/assets/Icons/jpg.png"
                       alt="JPG File"
                       className="w-18 h-18"
                     />}
                     {item.type === 'png' && <img
-                      src="/assets/icons/png.png"
+                      src="/assets/Icons/png.png"
                       alt="PNG File"
                       className="w-18 h-18"
                     />}
                     {item.type === 'link' && <img
-                      src="/assets/icons/web.png"
+                      src="/assets/Icons/web.png"
                       alt="Web Page Link"
                       className="w-18 h-18"
                     />}
@@ -229,17 +229,17 @@ export function TrashWindowContent() {
               <div className='w-full text-center flex flex-col gap-4'>
                 <div className="h-32 w-32 mx-auto flex items-center justify-center">
                    {selectedItem.type === 'jpg' && <img
-                      src="/assets/icons/jpg.png"
+                      src="/assets/Icons/jpg.png"
                       alt="JPG File"
                       
                     />}
                     {selectedItem.type === 'png' && <img
-                      src="/assets/icons/png.png"
+                      src="/assets/Icons/png.png"
                       alt="PNG File"
                       
                     />}
                     {selectedItem.type === 'link' && <img
-                      src="/assets/icons/web.png"
+                      src="/assets/Icons/web.png"
                       alt="Web Page Link"
                       
                     />}

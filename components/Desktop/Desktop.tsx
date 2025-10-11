@@ -148,7 +148,7 @@ const mainItems = [
   {
     id: "VS Code",
     title: "VS Code",
-    iconSrc: "/assets/icons/vscode.png",
+    iconSrc: "/assets/Icons/vscode.png",
     href: "/vscode",
   },
     {
@@ -172,7 +172,7 @@ const mainItems = [
   {
     id: "Siri",
     title: "Siri",
-    iconSrc: "/assets/icons/siri-logo.png",
+    iconSrc: "/assets/Icons/siri-logo.png",
     href: "/siri",
   },
   {
@@ -268,19 +268,19 @@ const DesktopContent = () => {
 
     switch (f.id) {
       case 'Projects':
-        icon = '/assets/icons/folder-full.png';
+        icon = '/assets/Icons/folder-full.png';
         type = 'Folder';
         break;
       case 'Resume':
-        icon = '/assets/icons/pdf.png';
+        icon = '/assets/Icons/pdf.png';
         type = 'File';
         break;
       case 'About Me':
-        icon = '/assets/icons/text.png';
+        icon = '/assets/Icons/text.png';
         type = 'File';
         break;
       default:
-        icon = '/assets/icons/folder.png';
+        icon = '/assets/Icons/folder.png';
         type = 'Folder';
     }
 

@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 
 // (Your icon mapping and helper function can remain the same)
 const batteryIconMap = [
-  { min: 81, max: 100, src: "/assets/icons/battery-full.png" },
-  { min: 51, max: 80,  src: "/assets/icons/battery-high.png" },
-  { min: 21, max: 50,  src: "/assets/icons/battery-medium.png" },
-  { min: 0,  max: 20,  src: "/assets/icons/battery-low.png" },
+  { min: 81, max: 100, src: "/assets/Icons/battery-full.png" },
+  { min: 51, max: 80,  src: "/assets/Icons/battery-high.png" },
+  { min: 21, max: 50,  src: "/assets/Icons/battery-medium.png" },
+  { min: 0,  max: 20,  src: "/assets/Icons/battery-low.png" },
 ];
-const chargingIconSrc = "/assets/icons/battery-charging.png";
-const unknownIconSrc = "/assets/icons/battery-full.png";
+const chargingIconSrc = "/assets/Icons/battery-charging.png";
+const unknownIconSrc = "/assets/Icons/battery-full.png";
 
 const getBatteryIcon = (level: number | null, isCharging: boolean): string => {
     if (isCharging) return chargingIconSrc;

@@ -430,10 +430,10 @@ const MacOSNavBar = forwardRef<HTMLDivElement, MacOSNavBarProps>(({ onSearchClic
         </button>
         <BatteryStatus />
         <button onClick={onControlCentreClick} className="p-1 rounded dark:invert hover:bg-black/20 dark:hover:bg-white/20">
-          <img src="/assets/icons/control-centre.png" alt="control-centre" width={16} className="mx-1"/>
+          <img src="/assets/Icons/control-centre.png" alt="control-centre" width={16} className="mx-1"/>
         </button>
         <button onClick={onSiriClick} className="p-1 rounded hover:bg-black/20">
-          <img src="assets/icons/siri.png" alt="" className="w-4 mx-1"/>
+          <img src="assets/Icons/siri.png" alt="" className="w-4 mx-1"/>
         </button>
         <AppleClock />
       </motion.div>
