@@ -53,7 +53,7 @@ const StartupLoader: React.FC<StartupLoaderProps> = ({ onFinished }) => {
   return (
     <div
       onClick={showHello ? handleClickToContinue : undefined}
-      className={`fixed inset-0 z-50000 transition-opacity duration-500 ease-in-out ${
+      className={`fixed inset-0 z-9999999 transition-opacity duration-500 ease-in-out ${
         isExiting ? 'opacity-0' : 'opacity-100'
       } ${
         showHello ? 'cursor-pointer' : 'cursor-default'

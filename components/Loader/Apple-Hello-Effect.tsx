@@ -208,7 +208,7 @@ function AppleHelloEnglishEffect({
       transition={{ duration: 0.5 }}
       {...props}
     >
-      <title>hello</title>
+      {/* <title>hello</title> */}
 
       {/* h1 */}
       <motion.path
