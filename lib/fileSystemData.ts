@@ -269,5 +269,5 @@ export const fileSystem: (File | Folder)[] = [
 export const favorites = [
   { id: 'Projects', name: 'Projects', icon: '/assets/Icons/folder.png' },
   { id: 'Resume', name: 'Resume', icon: '/assets/Icons/pdf.png' },
-  { id: 'Photos', name: 'Photos', icon: '/assets/Icons/Photos.png' },
+  { id: 'Photos', name: 'Photos', icon: '/assets/Icons/photos.png' },
 ];

@@ -26,17 +26,17 @@ const Folder = forwardRef<HTMLDivElement, FolderProps>(
         onMouseDown={(e) => onMouseDown(id, e)}
       >
         {id == 'Resume' && <img
-          src="/assets/icons/pdf.png"
+          src="/assets/Icons/pdf.png"
           alt="Folder"
           className="w-18 h-18 pointer-events-none" // Prevent img from capturing mouse events
         />}
         {id == 'About Me' && <img
-          src="/assets/icons/text.png"
+          src="/assets/Icons/text.png"
           alt="Folder"
           className="w-18 h-18 pointer-events-none" // Prevent img from capturing mouse events
         />}
         {id == 'Projects' && <img
-          src="/assets/icons/folder-full.png"
+          src="/assets/Icons/folder-full.png"
           alt="Folder"
           className="w-18 h-18 pointer-events-none" // Prevent img from capturing mouse events
         />}

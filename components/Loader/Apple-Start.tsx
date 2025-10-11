@@ -72,7 +72,7 @@ const StartupLoader: React.FC<StartupLoaderProps> = ({ onFinished }) => {
       <div className="relative z-10 flex h-full w-full items-center justify-center">
         {!showHello ? (
           <div className="flex flex-col items-center gap-16">
-            <img className="w-24 h-24" src='/assets/icons/logo-white.png' alt='apple-logo' />
+            <img className="w-24 h-24" src='/assets/Icons/logo-white.png' alt='apple-logo' />
             <div className="w-48 h-1.5 bg-gray-700 rounded-full overflow-hidden">
               <div
                 className="h-full bg-white"
