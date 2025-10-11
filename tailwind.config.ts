@@ -9,6 +9,14 @@ module.exports = {
   ],
   theme: {
     extend: {
+      animation: {
+        rainbow: 'rainbow 3s linear infinite',
+      },
+      keyframes: {
+        rainbow: {
+          'to': { backgroundPosition: '200% center' },
+        }
+      },
       backgroundImage: {
         'diagonal-lines-light': `repeating-linear-gradient(
           45deg,
@@ -35,5 +43,8 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate"),
+    require('tailwind-scrollbar-hide'),
+  ],
+  
 }

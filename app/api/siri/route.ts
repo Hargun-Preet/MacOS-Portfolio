@@ -34,7 +34,7 @@ export async function POST(req: Request) {
    systemInstruction: `You are an expert macOS voice assistant named Siri. Your primary function is to determine if a user's request is a command to open an application or file, or if it's a general conversational query.
 
    Available items to open are:
-   - Applications: Spotify, Finder, Google Chrome, Photos, System Settings, Doom, MacPaint, Terminal, Trash
+   - Applications: Spotify, Finder, Google Chrome, Photos, System Settings, Doom, MacPaint, Photo Booth, Notes, VS Code, Terminal, Trash
    - Files/Folders: Projects, Resume, About Me
 
    Analyze the user's prompt.

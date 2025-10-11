@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TechItem, TechStack } from './TechStack';
 import { IconBrandGithub, IconExternalLink } from '@tabler/icons-react';
-import { motion } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
+import { InteractiveHoverButton } from '@/components/ui/RainbowButton';
 
 const macosTechStack: TechItem[] = [
   { name: 'React', iconSrc: '/assets/tech-icons/react.png' },
@@ -12,14 +13,15 @@ const macosTechStack: TechItem[] = [
 ];
 
 const galleryImages = [
-    "/assets/wallpaper.jpg",
-    "/assets/wallpaper.jpg",
-    "/assets/wallpaper.jpg",
-    "/assets/wallpaper.jpg",
+    "/assets/demos/m-1.png",
+    "/assets/demos/m-2.png",
+    "/assets/demos/m-3.png",
+    "/assets/demos/m-4.png",
 ];
 
 // This component contains all the details for a single project.
 export const MacOSPortfolio = ({ isMaximized }: { isMaximized?: boolean }) => {
+  const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
   return (
     <>
       {/* Header Section */}
@@ -62,10 +64,35 @@ export const MacOSPortfolio = ({ isMaximized }: { isMaximized?: boolean }) => {
             }}
           >
             <p className="text-gray-700 dark:text-white/80 mb-6 mt-6">
-                This project is the very website you are using! It combines a custom window system with a suite of animations to create a unique and engaging portfolio experience.
+                I didn't want to just <i>show</i> you my work — I wanted you to experience it. This project is a fully interactive macOS desktop environment built from scratch in the browser, serving as a living showcase for my passion for creating intricate and delightful user experiences.
             </p>
             <div className="mt-6">
                 <TechStack technologies={macosTechStack} />
+            </div>
+
+            {/* --- Links --- */}
+            <div className="flex items-center gap-4 pt-4 mt-2">
+              <a 
+                href="#"
+                target="_blank"
+              >
+                <InteractiveHoverButton
+                  text="View Live Site"
+                  icon={<IconExternalLink size={16} />}
+                  isMaximized={isMaximized}
+                />
+              </a>
+              <a 
+                href="https://github.com/Hargun-Preet/MacOS-Portfolio"
+                target="_blank"
+              >
+                <InteractiveHoverButton
+                  text="View on GitHub"
+                  icon={<IconBrandGithub size={16} />}
+                  isMaximized={isMaximized}
+                >
+                </InteractiveHoverButton>
+              </a>
             </div>
           </motion.div>
         </div>
@@ -81,7 +108,7 @@ export const MacOSPortfolio = ({ isMaximized }: { isMaximized?: boolean }) => {
             }}
           >
             <video 
-              src="/assets/demos/project-demo.mp4"
+              src="/assets/demos/mac-demo.mp4"
               autoPlay
               loop
               muted
@@ -105,7 +132,7 @@ export const MacOSPortfolio = ({ isMaximized }: { isMaximized?: boolean }) => {
       >
         <h2 className="text-2xl mt-6 text-gray-800 dark:text-white font-semibold mb-2">The Challenge</h2>
         <p className="text-gray-700 dark:text-white/80 leading-relaxed">
-            The goal was to create a unique, memorable portfolio that went beyond traditional templates. I wanted to build an interactive experience that not only showcased my projects but also demonstrated my skills in front-end development, animation, and creating complex user interfaces from scratch.
+            My goal was to answer a single question: could I build a portfolio that was also a product? I set out to capture the fluidity and complexity of a modern desktop OS, not just visually, but functionally. The challenge was to prove my skills in a tangible, interactive way that a traditional webpage never could.
         </p>
       </motion.div>
 
@@ -121,19 +148,24 @@ export const MacOSPortfolio = ({ isMaximized }: { isMaximized?: boolean }) => {
         <h2 className="text-2xl mt-6 text-gray-800 dark:text-white font-semibold mb-4">Key Features & Implementation</h2>
         <ul className="list-disc list-inside space-y-3 text-gray-700 dark:text-white/80">
             <li >
-                <strong className="font-semibold text-gray-800 dark:text-white/90">Custom Window System</strong> 
+                <strong className="font-semibold text-gray-800 dark:text-white/90">A Desktop-Class Windowing Engine</strong> 
                 <br />
-                Built a fully functional windowing system with dragging, maximizing, and state management, all controlled from a single parent component.
+                At the core is a custom window manager built in React. It handles dynamic z-index stacking, positional state memory, and pixel-perfect drag, maximize, and minimize transitions for a true multi-tasking feel.
             </li>
             <li>
-                <strong className="font-semibold text-gray-800 dark:text-white/90">Genie Effect Animation</strong> 
+                <strong className="font-semibold text-gray-800 dark:text-white/90">Reviving a Classic Animation - The Genie Effect</strong> 
                 <br />
-                Developed a custom React hook to recreate the iconic macOS "Genie" effect for minimizing windows, using JavaScript to manipulate element styles frame-by-frame.
+                I took a deep dive into the iconic "Genie" effect, reverse-engineering the animation from legacy code and rebuilding it as a performant React hook. It's a testament to my passion for the small details that make an interface feel magical.
             </li>
             <li>
-                <strong className="font-semibold text-gray-800 dark:text-white/90">Interactive UI Components</strong> 
+                <strong className="font-semibold text-gray-800 dark:text-white/90">Building an AI Conversation Partner - Siri</strong> 
                 <br />
-                Designed and implemented several components from scratch, including the Dock, a Finder-style window, and hover-to-reveal tech stack icons, using Tailwind CSS and Framer Motion.
+                The voice assistant isn't a gimmick. It's a complete pipeline that captures your voice via the Web Speech API, understands intent using the Gemini AI model, and speaks back with a realistic voice from a Hugging Face model—a modern, end-to-end AI integration capable of not just interaction, but also tasks like opening apps.
+            </li>
+            <li>
+                <strong className="font-semibold text-gray-800 dark:text-white/90">An Ecosystem of Live Apps</strong> 
+                <br />
+                The OS is brought to life by a suite of high-fidelity applications, each chosen to tell a story. You'll find modern developer tools like a fully functional Terminal and an integrated VS Code instance, creative apps like a rich-text Notes editor, a tribute to Apple's legacy with a recreation of the classic MacPaint, and—to answer the ultimate engineering challenge—yes, it can run Doom.
             </li>
         </ul>
       </motion.div>
@@ -151,6 +183,8 @@ export const MacOSPortfolio = ({ isMaximized }: { isMaximized?: boolean }) => {
                         delay: index * 0.1,
                         ease: "easeInOut",
                     }}
+                    onClick={() => setSelectedPhoto(src)}
+                    className="cursor-pointer"
                 >
                     <img 
                         key={index}
@@ -161,6 +195,27 @@ export const MacOSPortfolio = ({ isMaximized }: { isMaximized?: boolean }) => {
                 </motion.div>
             ))}
         </div>
+
+        <AnimatePresence>
+        {selectedPhoto && (
+          <motion.div 
+            className="fixed inset-0 z-[9999] bg-black/80 backdrop-blur-sm flex items-center justify-center"
+            onClick={() => setSelectedPhoto(null)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <motion.img 
+              layoutId={`photo-${selectedPhoto}`} // Optional: for a smooth transition if you add layoutId to thumbnails
+              src={selectedPhoto}
+              alt="Enlarged view"
+              className="max-h-[90vh] max-w-[90vw] object-contain rounded-lg shadow-2xl"
+              onClick={(e) => e.stopPropagation()} // Prevent closing when clicking the image
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
       </div>
 
       {/* --- Outcome & Learnings (Result) --- */}
@@ -174,27 +229,9 @@ export const MacOSPortfolio = ({ isMaximized }: { isMaximized?: boolean }) => {
       >
         <h2 className="text-2xl mt-6 text-gray-800 dark:text-white font-semibold mb-2">Outcome & Learnings</h2>
         <p className="text-gray-700 dark:text-white/80 leading-relaxed">
-            The result is a highly interactive and personal portfolio that I'm proud of. This project deepened my understanding of React state management, performance optimization for animations, and the intricacies of building a complex, component-based UI.
+            This project was my playground for mastering the complexities of a large-scale React application. It taught me invaluable lessons in performance optimization, state architecture, and the discipline required to build a polished, product-grade experience from a blank canvas. The result is a portfolio I'm truly proud of, and I had a blast building it.
         </p>
       </motion.div>
-
-      {/* --- Links --- */}
-      <div className="flex items-center gap-4 pt-4">
-        <a 
-          href="#" // Add your live link here
-          className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-        >
-          <IconExternalLink size={16} />
-          <span>View Live Site</span>
-        </a>
-        <a 
-          href="#" // Add your GitHub link here
-          className="flex items-center gap-2 px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors"
-        >
-          <IconBrandGithub size={16} />
-          <span>View on GitHub</span>
-        </a>
-      </div>
     </>
   );
 };

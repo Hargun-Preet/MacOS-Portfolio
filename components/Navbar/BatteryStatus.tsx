@@ -60,24 +60,24 @@ export default function BatteryStatus() {
 
   if (level === null) {
     return (
-      <div className="flex items-center space-x-1">
+      <div className="flex items-center text-[0.85rem] space-x-1.5">
         <span>100%</span>
         <img
           src={unknownIconSrc}
           alt="Battery status unknown"
-          className="h-6 object-contain"
+          className="h-7 object-contain dark:invert"
         />
       </div>
     );
   }
 
   return (
-    <div className="flex text-[0.75rem] items-center space-x-1">
-      <span>{level}%</span>
+    <div className="flex text-[0.85rem] items-center space-x-1.5">
+      <span className="mt-0.5">{level}%</span>
       <img
         src={currentIconSrc}
         alt={`Battery status: ${charging ? "Charging" : `${level}%`}`}
-        className="h-6 w-auto object-contain"
+        className="h-7 w-auto object-contain dark:invert"
       />
     </div>
   );

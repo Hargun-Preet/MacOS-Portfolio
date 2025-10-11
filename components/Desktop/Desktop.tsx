@@ -27,6 +27,10 @@ import { SystemSettingsWindow } from "../Settings/SettingsWindow";
 import { SettingsProvider, useSettings } from "../Settings/SettingsContext";
 import { PhotoBoothWindowContent } from "../PhotoBooth/PhotoBooth";
 import dynamic from "next/dynamic";
+import { TrashWindowContent } from "../Trash/Trash";
+import { AboutThisMacContent } from "../Folder/AboutMac";
+import { ControlCentre } from "../Navbar/ControlCentre";
+import { motion, AnimatePresence } from "motion/react";
 
 const DynamicNotesWindow = dynamic(
   () => import('../Notes/Notes').then((mod) => mod.NotesWindowContent),
@@ -147,6 +151,24 @@ const mainItems = [
     iconSrc: "/assets/icons/vscode.png",
     href: "/vscode",
   },
+    {
+    id: "GitHub",
+    title: "GitHub",
+    iconSrc: "/assets/Icons/github.png",
+    href: "https://github.com/Hargun-Preet",
+  },
+  {
+    id: "LinkedIn",
+    title: "LinkedIn",
+    iconSrc: "/assets/Icons/linkedin.png",
+    href: "https://www.linkedin.com/in/hargun-preet-singh-964224282/",
+  },
+  {
+    id: "Mail",
+    title: "Mail",
+    iconSrc: "/assets/Icons/mail.png",
+    href: "mailto:Singhhargun077@gmail.com",
+  },
   {
     id: "Siri",
     title: "Siri",
@@ -158,6 +180,15 @@ const mainItems = [
     title: "Terminal",
     iconSrc: "/assets/Icons/Terminal.jpg",
     href: "/terminal",
+  },
+];
+
+const specialWindowItems = [
+  {
+    id: "About This Mac",
+    title: "About This Mac",
+    iconSrc: "/assets/Icons/logo.png",
+    href: "",
   },
 ];
 
@@ -198,6 +229,12 @@ const initialWidgets: WidgetType[] = [
 const DesktopContent = () => {
   const { settings } = useSettings();
 
+    // State for the wallpaper currently visible on screen
+  const [displayWallpaper, setDisplayWallpaper] = useState(settings.wallpaper);
+  
+  // State to hold the URL of the next wallpaper while it loads
+  const [loadingWallpaper, setLoadingWallpaper] = useState<string | null>(null);
+
   // Calculate brightness overlay opacity. 100 brightness = 0 opacity.
   const brightnessOverlayOpacity = 1 - (settings.brightness / 100);
   const [folders, setFolders] = useState<FolderType[]>(initialFolders);
@@ -207,6 +244,7 @@ const DesktopContent = () => {
   const [widgets, setWidgets] = useState<WidgetType[]>(initialWidgets);
   const [isSpotlightOpen, setIsSpotlightOpen] = useState(false);
   const [isSiriOpen, setIsSiriOpen] = useState(false);
+  const [isControlCentreOpen, setIsControlCentreOpen] = useState(false);
 
   // Refs for UI elements
   const navbarRef = useRef<HTMLDivElement>(null);
@@ -230,7 +268,7 @@ const DesktopContent = () => {
 
     switch (f.id) {
       case 'Projects':
-        icon = '/assets/icons/folder.png';
+        icon = '/assets/icons/folder-full.png';
         type = 'Folder';
         break;
       case 'Resume':
@@ -264,6 +302,21 @@ const DesktopContent = () => {
 
     return [...folders, ...apps];
   }, []);
+
+  useEffect(() => {
+  // If the selected wallpaper is different from what's displayed,
+  // start loading the new one.
+    if (settings.wallpaper !== displayWallpaper) {
+      setLoadingWallpaper(settings.wallpaper);
+    }
+  }, [settings.wallpaper, displayWallpaper]);
+
+  const handleImageLoad = () => {
+    if (loadingWallpaper) {
+      setDisplayWallpaper(loadingWallpaper); // Update the visible wallpaper
+      setLoadingWallpaper(null); // Clear the loading state
+    }
+  };
 
   const dragStartPos = useRef<{ x: number, y: number } | null>(null);
   const doubleClickTimeout = useRef<NodeJS.Timeout | null>(null);
@@ -302,7 +355,7 @@ const DesktopContent = () => {
     if (openWindows.some(w => w.id === id)) return;
 
     // Find the item's data (from folders, dock items, etc.)
-    const allItems = [...initialFolders, ...mainItems, ...secondaryItems, {id: 'finder', name: 'Finder'}];
+    const allItems = [...initialFolders, ...mainItems, ...secondaryItems, ...specialWindowItems, {id: 'finder', name: 'Finder'}];
     const itemData = allItems.find(item => item.id.toLowerCase() === id.toLowerCase());
 
     if (!itemData) {
@@ -310,12 +363,16 @@ const DesktopContent = () => {
       return;
     }
 
+    const isAboutMac = id.toLowerCase() === 'about this mac';
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
     const newWindow: WindowType = {
       id: itemData.id,
       name: itemData.title || itemData.name,
-      position: getInitialWindowPosition(),
-      width: WINDOW_WIDTH,
-      height: WINDOW_HEIGHT,
+      position: isAboutMac ? {x: (screenWidth - 360) / 2, y: (screenHeight - 520) / 2}: getInitialWindowPosition(),
+      width: isAboutMac ? 360 : WINDOW_WIDTH,
+      height: isAboutMac ? 520 : WINDOW_HEIGHT,
       isOpen: true,
       isVisible: false,
       isAnimating: false,
@@ -360,6 +417,10 @@ const DesktopContent = () => {
         return <TerminalWindowContent openWindow={openWindow} />;
       case 'System Settings':
         return <SystemSettingsWindow />
+      case 'Trash':
+        return <TrashWindowContent />
+      case 'About This Mac':
+        return <AboutThisMacContent />;
       default:
         return null;
     }
@@ -438,9 +499,6 @@ const DesktopContent = () => {
     };
   }, [cleanup]);
 
-  // Handle folder dragging
-  // filepath: e:\Projects\Portfolio\macos-portfolio\components\Desktop\Desktop.tsx
-// ...existing code...
 // Handle folder and widget dragging
 useEffect(() => {
   const handleMouseMove = (e: MouseEvent) => {
@@ -558,7 +616,6 @@ useEffect(() => {
     window.removeEventListener("mouseup", handleMouseUp);
   };
 }, [dragState, folders, widgets]);
-// ...existing code...
 
   const handleMouseDownOnFolder = (id: string, e: React.MouseEvent) => {
     e.preventDefault();
@@ -590,7 +647,6 @@ useEffect(() => {
     });
   };
 
-  // In Desktop.tsx, replace your current handleOpenFolder function with this one.
 
   const handleOpenFolder = async (id: string) => {
     try {
@@ -675,8 +731,8 @@ useEffect(() => {
           isVisible: false, // Start hidden
           isAnimating: true,
           position: getInitialWindowPosition(),
-          width: WINDOW_WIDTH, // <-- Add this
-          height: WINDOW_HEIGHT, // <-- Add this
+          width: WINDOW_WIDTH,
+          height: WINDOW_HEIGHT,
         };
 
         setOpenWindows(prev => [...prev, newWindow]);
@@ -709,8 +765,6 @@ useEffect(() => {
       console.error('Error handling dock item click:', error);
     }
   };
-
-  // In Desktop.tsx, replace your current handleCloseWindow function with this simplified version.
 
   const handleDisappear = (id: string) => {
   // Step 1: Set isVisible to false to trigger the fade-out animation in your ImprovedWindow component.
@@ -858,13 +912,22 @@ useEffect(() => {
     <div> 
       <div
         className="relative w-screen h-screen bg-cover bg-center overflow-hidden transition-all duration-500"
-        style={{ backgroundImage: `url(${settings.wallpaper})` }}
+        style={{ backgroundImage: `url(${displayWallpaper})` }}
       >
         {/* BRIGHTNESS OVERLAY */}
         <div 
-          className="absolute inset-0 bg-black transition-opacity duration-200 pointer-events-none z-50000"
+          className="absolute inset-0 bg-black transition-opacity duration-200 pointer-events-none z-9999999"
           style={{ opacity: brightnessOverlayOpacity }}
         />
+        
+        {loadingWallpaper && (
+          <img 
+            src={loadingWallpaper} 
+            onLoad={handleImageLoad} 
+            style={{ display: 'none' }}
+            alt="Preloading wallpaper"
+          />
+        )}
         
         {/* <div
           className="relative w-screen h-screen bg-[url('/assets/wallpaper.jpg')] bg-cover bg-center overflow-hidden"
@@ -874,7 +937,7 @@ useEffect(() => {
             }
           }}
         > */}
-          <MacOSNavBar ref={navbarRef} onSearchClick={() => setIsSpotlightOpen(true)} onSiriClick={() => setIsSiriOpen(true)}/>
+          <MacOSNavBar ref={navbarRef} onSearchClick={() => setIsSpotlightOpen(true)} onSiriClick={() => setIsSiriOpen(true)} onControlCentreClick={() => setIsControlCentreOpen(prev => !prev)} openWindow={openWindow}/>
           
           {/* Floating Dock with Preview Windows */}
           <FloatingDock
@@ -913,6 +976,21 @@ useEffect(() => {
               {widget.component}
             </Widget>
           ))}
+          
+          <AnimatePresence>
+            {isControlCentreOpen && (
+              <>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  onClick={() => setIsControlCentreOpen(false)}
+                  className="fixed inset-0 z-999998"
+                />
+                <ControlCentre />
+              </>
+            )}
+          </AnimatePresence>
 
           <SpotlightSearch
             isOpen={isSpotlightOpen}
@@ -963,8 +1041,6 @@ useEffect(() => {
 
 export default function Desktop() {
   return (
-    <SettingsProvider>
       <DesktopContent />
-    </SettingsProvider>
   );
 }

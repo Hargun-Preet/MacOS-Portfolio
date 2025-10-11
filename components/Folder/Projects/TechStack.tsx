@@ -32,7 +32,7 @@ const textVariants = {
 
 export const TechStack = ({ technologies }: TechStackProps) => {
   return (
-    <div className="mt-2 flex max-w-[18rem] flex-wrap">
+    <div className="mt-2 flex max-w-[24rem] flex-wrap">
       {technologies.map((tech, index) => (
         <motion.div
           key={tech.name}
@@ -47,7 +47,7 @@ export const TechStack = ({ technologies }: TechStackProps) => {
           <img 
             src={tech.iconSrc} 
             alt={`${tech.name} icon`} 
-            className="h-6 w-6 flex-shrink-0" 
+            className="p-0.25 h-6 w-6 flex-shrink-0 object-contain" 
           />
 
           {/* 3. The span is now a motion component linked to the variants */}

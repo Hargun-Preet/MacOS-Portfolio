@@ -69,7 +69,7 @@ export const SpotlightSearch: React.FC<SpotlightSearchProps> = ({ isOpen, onClos
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50000 flex justify-center pt-[10%] bg-black/10"
+          className="fixed inset-0 z-50000 flex justify-center pt-[10%] bg-black/20"
           onMouseDown={onClose}
         >
           <motion.div
@@ -106,9 +106,9 @@ export const SpotlightSearch: React.FC<SpotlightSearchProps> = ({ isOpen, onClos
                   animate={{ height: "60vh", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.2 }}
-                  className="overflow-hidden"
+                  className=""
                 >
-                  <div className="p-2 max-h-[60vh] overflow-y-hidden">
+                  <div className="p-2 max-h-[60vh] overflow-y-auto scrollbar-hide">
                     {results.map((item, index) => (
                       <motion.li
                         key={item.id}

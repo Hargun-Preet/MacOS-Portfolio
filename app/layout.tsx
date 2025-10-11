@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SettingsProvider } from "@/components/Settings/SettingsContext";
+import ClientLayoutWrapper from "./ClientWrapper";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -35,6 +37,7 @@ export default function RootLayout({
         @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
         </style>
       </head>
+      <SettingsProvider>
       <body
         className={`${inter.className} antialiased`}
       >
@@ -44,9 +47,12 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <ClientLayoutWrapper>
+              {children}
+            </ClientLayoutWrapper>
         </ThemeProvider>
       </body>
+      </SettingsProvider>
     </html>
   );
 }

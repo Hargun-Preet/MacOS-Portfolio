@@ -1,12 +1,15 @@
 import React, { useState, useMemo, useEffect } from 'react';
 
-// 1. Import the project components (same as before)
 import { MacOSPortfolio } from './Projects/MacOsPortfolio';
 import { IconSearch } from '@tabler/icons-react';
-// import { ProjectAlpha } from './projects/ProjectAlpha'; // etc.
-const InquateContent = () => <div>Details for Inquate will go here.</div>;
+import { InquateContent } from './Projects/InquateContent';
+import { BudgetlyContent } from './Projects/BudgetlyContent';
+import { hir0Content } from './Projects/hir0Content';
+import { MysticBrawlContent } from './Projects/MysticBrawlContent';
+import { StockGenieContent } from './Projects/StockGenieContent';
+import { AegisContent } from './Projects/AegisContent';
+import { KamikazeContent } from './Projects/KamikazeContent';
 
-// 2. The projectsData array is the same as before
 const projectsData = [
   {
     id: "project01",
@@ -20,28 +23,33 @@ const projectsData = [
   },
   {
     id: "project03",
-    title: "hir0",
-    component: InquateContent,
+    title: "Budgetly",
+    component: BudgetlyContent,
   },
   {
     id: "project04",
-    title: "Budgetly",
-    component: InquateContent,
+    title: "hir0",
+    component: hir0Content,
   },
   {
     id: "project05",
-    title: "Mystic Brawl",
-    component: InquateContent,
+    title: "Project Aegis",
+    component: AegisContent,
   },
   {
     id: "project06",
-    title: "Stock Genie",
-    component: InquateContent,
+    title: "Mystic Brawl",
+    component: MysticBrawlContent,
   },
   {
     id: "project07",
+    title: "Stock Genie",
+    component: StockGenieContent,
+  },
+  {
+    id: "project08",
     title: "Kamikaze",
-    component: InquateContent,
+    component: KamikazeContent,
   },
 ];
 
@@ -73,7 +81,7 @@ export const ProjectsWindowContent = ({ isMaximized }: { isMaximized?: boolean }
   return (
     <div className="flex h-full w-full bg-white dark:bg-neutral-700">
       {/* Sidebar */}
-      <div className="flex-shrink-0 w-1/3 max-w-[200px] h-full bg-gray-100/80 dark:bg-neutral-600/90 border-r border-gray-300 dark:border-neutral-600 flex flex-col">
+      <div className="flex-shrink-0 w-1/4 max-w-[200px] h-full bg-gray-100/80 dark:bg-neutral-600/90 border-r border-gray-300 dark:border-neutral-600 flex flex-col">
         <div className="p-2">
           <div className="relative">
             <IconSearch

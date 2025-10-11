@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { galaxyPreset, Orb } from 'react-ai-orb';
-import { cn } from '@/lib/utils';
 
 // --- SIRI COMPONENT ---
 interface SiriProps {
@@ -191,17 +190,17 @@ export const Siri: React.FC<SiriProps> = ({ isOpen, onClose, openWindow }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50000 flex items-start justify-end pt-10 pr-4"
+            className="fixed inset-0 z-50000 flex items-start justify-end pt-10 pr-4 "
             onMouseDown={onClose}
           >
-            <div className="flex flex-col items-end gap-4" onMouseDown={(e) => e.stopPropagation()}>
+            <div className="flex flex-col items-end gap-4 " onMouseDown={(e) => e.stopPropagation()}>
               
               {/* --- MODIFIED: Orb is now in a sized wrapper --- */}
               <motion.div
                 style={{ width: 100, height: 100 }}
                 animate={{ scale: orbScale }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                className="flex items-center justify-center"
+                className="flex items-center justify-center rounded-full backdrop-blur-[1px]"
               >
                 <button onClick={startListening} className="outline-none">
                   <Orb {...galaxyPreset} />
@@ -212,9 +211,9 @@ export const Siri: React.FC<SiriProps> = ({ isOpen, onClose, openWindow }) => {
                 <motion.div 
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-white/80 backdrop-blur-md p-3 rounded-xl shadow-lg max-w-xs"
+                  className="bg-white/30 dark:bg-black/20 backdrop-blur-md p-3 rounded-xl shadow-lg max-w-xs border border-neutral-300 dark:border-neutral-600"
                 >
-                  <p className="text-neutral-900">
+                  <p className="text-black dark:text-white">
                     {transcript}
                   </p>
                 </motion.div>
@@ -226,7 +225,7 @@ export const Siri: React.FC<SiriProps> = ({ isOpen, onClose, openWindow }) => {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
-                    className="bg-white/80 backdrop-blur-md p-3 rounded-xl shadow-lg max-w-xs"
+                    className="bg-white/30 dark:bg-black/20 backdrop-blur-md p-3 rounded-xl shadow-lg max-w-xs border border-neutral-300 dark:border-neutral-600"
                   >
                     <div className="flex items-center gap-2 text-neutral-500">
                       <div className="w-2 h-2 bg-neutral-400 rounded-full animate-pulse" />
@@ -240,10 +239,10 @@ export const Siri: React.FC<SiriProps> = ({ isOpen, onClose, openWindow }) => {
                   <motion.div 
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="bg-white/80 backdrop-blur-md p-3 rounded-xl shadow-lg max-w-xs"
+                    className="bg-white/30 dark:bg-black/20 backdrop-blur-md p-3 rounded-xl shadow-lg max-w-xs border border-neutral-300 dark:border-neutral-600"
                   >
                     <motion.p 
-                      className="font-semibold text-blue-700"
+                      className="font-semibold text-blue-700 dark:text-blue-200"
                       variants={textBubbleVariant}
                       initial="hidden"
                       animate="visible"

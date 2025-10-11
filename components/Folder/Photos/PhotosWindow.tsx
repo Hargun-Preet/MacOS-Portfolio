@@ -15,7 +15,7 @@ export const PhotosWindowContent = () => {
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const [activeCategory, setActiveCategory] = useState('Library');
   const [searchQuery, setSearchQuery] = useState('');
-  const [zoomLevel, setZoomLevel] = useState(5); // Default grid size (5 columns)
+  const [zoomLevel, setZoomLevel] = useState(9); // Default grid size (5 columns)
 
   // Memoized filtering logic
   const filteredPhotos = useMemo(() => {
@@ -99,7 +99,7 @@ export const PhotosWindowContent = () => {
             <span className="text-xs text-gray-700 dark:text-white"><IconMinus className='w-3 mr-1'/></span>
             <input 
               type="range" 
-              min="2" 
+              min="6" 
               max="10" 
               value={zoomLevel}
               onChange={(e) => setZoomLevel(parseInt(e.target.value, 10))}

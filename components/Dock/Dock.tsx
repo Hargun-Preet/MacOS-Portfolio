@@ -164,9 +164,15 @@ function IconContainer({
 
   const [hovered, setHovered] = useState(false);
 
+  const isExternalLink = href && (href.startsWith('mailto:') || href.startsWith('https://'));
+
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    if (ref.current && previewRef.current) {
+    if (isExternalLink) {
+      // For external links, open in a new tab/window (or default for mailto)
+      window.open(href, '_blank');
+    } else if (ref.current && previewRef.current) {
+      // For internal apps, call onItemClick
       onItemClick({ title, iconSrc, href, id }, ref.current, previewRef.current);
     }
   };

@@ -36,7 +36,7 @@ const Folder = forwardRef<HTMLDivElement, FolderProps>(
           className="w-18 h-18 pointer-events-none" // Prevent img from capturing mouse events
         />}
         {id == 'Projects' && <img
-          src="/assets/icons/folder.png"
+          src="/assets/icons/folder-full.png"
           alt="Folder"
           className="w-18 h-18 pointer-events-none" // Prevent img from capturing mouse events
         />}

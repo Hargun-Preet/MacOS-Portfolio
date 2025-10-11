@@ -59,7 +59,7 @@ export function ResizablePanels({
       role="group"
       aria-label="Resizable Panels"
     >
-      <div style={{ width: leftWidth }} className="h-full border-r border-border bg-sidebar">
+      <div style={{ width: leftWidth }} className="h-full border-r border-neutral-300 dark:border-neutral-600 bg-sidebar">
         {left}
       </div>
 

@@ -1,11 +1,43 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
+
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
   --dock-background: rgba(255, 255, 255, 0.25)
   --pattern-fg: #d4d4d4;
+  color-scheme: light dark;
+}
+
+:root {
+  /* This is for your light theme */
+  --notes-yellow: #facc15; /* Example: A rich yellow */
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  
+  --blockquote-border: #e5e7eb; /* Light gray */
+  --blockquote-text: #6b7280;    /* Medium gray */
+  
+  --code-bg: #f3f4f6;          /* Very light gray */
+  --code-text: #111827;        /* Dark gray for text */
+  
+  --highlight-bg: color-mix(in oklch, var(--notes-yellow) 50%, white);
+  
+  --link-text: #ca8a04; /* A darker yellow for better contrast on white */
+}
+
+.dark {
+  /* This overrides the variables for your dark theme */
+  --blockquote-border: #404040; /* Darker gray */
+  --blockquote-text: #a1a1aa;    /* Lighter gray */
+  
+  --code-bg: #262626;          /* Dark gray */
+  --code-text: #e5e7eb;        /* Light gray for text */
+  
+  --highlight-bg: color-mix(in oklch, var(--notes-yellow) 30%, #171717); /* Mix with dark bg */
+  
+  --link-text: #facc15; /* Your base yellow has better contrast on dark */
 }
 
 /* .light {
@@ -42,6 +74,7 @@
   .cursor-grabbing {
     cursor: url('/assets/cursors/cursor-grab.png') 10 10, grabbing;
   } */ 
+  
    :root {
     --background: #ffffff;
     --foreground: #171717;
@@ -296,9 +329,37 @@ a, button {
 
 /* TipTap content styles to fix headings, lists, checklists, blockquotes, and code blocks */
 .tiptap {
-  color: var(--foreground);
   line-height: 1.6;
+  @apply text-black dark:text-white;
 }
+
+/* In your globals.css */
+
+/* 1. Global Reset for .ProseMirror (Base and Focus) */
+.ProseMirror {
+  /* Set a transparent border by default to prevent layout shift */
+  border: 2px solid transparent; 
+  /* Add default padding/border-radius if desired */
+  padding-left: 0.5rem; 
+  border-radius: 0.375rem;
+
+  /* Smooth transition for border and outline colors */
+  transition: border-color 0.2s ease-in-out, outline-color 0.2s ease-in-out;
+}
+.ProseMirror:focus,
+.ProseMirror:focus-visible {
+  outline: none !important;
+  outline: 2px solid theme('colors.neutral.300');
+  outline-offset: 2px;
+  border-color: theme('colors.neutral.300');
+}
+.dark .ProseMirror:focus,
+.dark .ProseMirror:focus-visible {
+  outline-color: theme('colors.neutral.600');
+  border-color: theme('colors.neutral.600');
+}
+
+
 
 .tiptap h1,
 .tiptap h2,
@@ -307,81 +368,140 @@ a, button {
   line-height: 1.2;
   margin: 0.75rem 0 0.5rem;
 }
-.tiptap h1 {
-  font-size: 1.625rem;
-} /* ~26px */
-.tiptap h2 {
-  font-size: 1.375rem;
-} /* ~22px */
-.tiptap h3 {
-  font-size: 1.125rem;
-} /* ~18px */
-
-.tiptap p {
-  margin: 0.5rem 0;
-}
-
+.tiptap h1 { font-size: 1.625rem; }
+.tiptap h2 { font-size: 1.375rem; }
+.tiptap h3 { font-size: 1.125rem; }
+.tiptap p { margin: 0.5rem 0; }
 .tiptap ul,
 .tiptap ol {
   padding-left: 1.25rem;
-  margin: 0.5rem 0 0.5rem 0;
+  margin: 0.5rem 0;
 }
-.tiptap ul {
-  list-style: disc;
-}
-.tiptap ol {
-  list-style: decimal;
-}
-.tiptap li {
-  margin: 0.25rem 0;
-}
+.tiptap ul { list-style: disc; }
+.tiptap ol { list-style: decimal; }
+.tiptap li { margin: 0.25rem 0; }
 
-/* Checklists */
-.tiptap ul.task-list {
+/* --- 5. Corrected Checklists --- */
+/* --- Corrected Checklists (Replace existing) --- */
+/* Styling for Tiptap Task Lists - THIS IS ESSENTIAL */
+.tiptap ul[data-type='taskList'] {
   list-style: none;
-  padding-left: 0;
-  margin-left: 0;
-}
-.tiptap ul.task-list li {
-  display: flex;
-  gap: 0.5rem;
-  align-items: flex-start;
-  margin: 0.25rem 0;
-}
-.tiptap ul.task-list li > label {
-  display: inline-flex;
-  align-items: center;
-  margin-top: 0.2rem; /* visually centers checkbox */
-}
-.tiptap ul.task-list li > div {
-  flex: 1;
-}
-.tiptap ul.task-list input[type="checkbox"] {
-  accent-color: var(--notes-yellow);
-  width: 1rem;
-  height: 1rem;
-  margin: 0;
+  padding: 0;
 }
 
-/* Blockquote */
+.tiptap ul[data-type='taskList'] li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tiptap ul[data-type='taskList'] li > label {
+  flex: 0 0 auto;
+  margin-right: 0.5rem;
+  margin-top: 0.3rem;
+  user-select: none;
+}
+
+.tiptap ul[data-type='taskList'] li > div {
+  flex: 1 1 auto;
+}
+
+.tiptap ul[data-type='taskList'] li > label input[type='checkbox'] {
+  cursor: pointer;
+}
+
+.tiptap ul[data-type='taskList'] li[data-checked='true'] > div > p {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* 1. Hide the default browser checkbox */
+.tiptap ul[data-type='taskList'] li > label input[type='checkbox'] {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%; /* Make it a circle */
+  cursor: pointer;
+  position: relative;
+  
+  /* Unchecked state border */
+  border: 2px solid #c7c7c7;
+
+  /* Smooth transition for checking/unchecking */
+  transition: all 0.15s ease-in-out;
+}
+
+/* 2. Style the checked state */
+.tiptap ul[data-type='taskList'] li > label input[type='checkbox']:checked {
+  background-color: #ffcc00; /* macOS yellow */
+  border-color: #ffcc00;
+}
+
+/* 3. Create the checkmark using a pseudo-element */
+.tiptap ul[data-type='taskList'] li > label input[type='checkbox']:checked::after {
+  content: '';
+  position: absolute;
+  /* Position the checkmark inside the circle */
+  left: 5px;
+  top: 2px;
+  /* Size of the checkmark */
+  width: 4px;
+  height: 8px;
+  /* Style the checkmark */
+  border: solid white; /* Checkmark color */
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* 4. Style the text for a completed item */
+.tiptap ul[data-type='taskList'] li[data-checked='true'] > div > p {
+  text-decoration: line-through;
+  color: #9a9a9a; /* Softer color for completed text */
+  opacity: 0.8;
+}
+
+
+/* === Dark Mode Adjustments === */
+.dark .tiptap ul[data-type='taskList'] li > label input[type='checkbox'] {
+  /* Lighter border for better contrast on dark backgrounds */
+  border-color: #5a5a5a;
+}
+
+.dark .tiptap ul[data-type='taskList'] li > label input[type='checkbox']:checked {
+  /* The yellow works well in dark mode, but you can adjust if needed */
+  background-color: #ffcc00;
+  border-color: #ffcc00;
+}
+
+.dark .tiptap ul[data-type='taskList'] li[data-checked='true'] > div > p {
+  color: #737373; /* Adjust completed text color for dark mode */
+}
+
+/* Blockquote - FIXED */
 .tiptap blockquote {
-  border-left: 3px solid oklch(0.922 0 0);
+  border-left: 3px solid var(--blockquote-border);
   padding-left: 0.75rem;
-  color: oklch(0.556 0 0);
+  color: var(--blockquote-text);
   margin: 0.75rem 0;
 }
 
-/* Inline code and code blocks */
+/* Inline code and code blocks - FIXED */
 .tiptap code {
   font-family: var(--font-mono);
-  background: oklch(0.97 0 0);
+  background: var(--code-bg);
+  color: var(--code-text);
   padding: 0.125rem 0.25rem;
   border-radius: 0.25rem;
 }
 .tiptap pre {
-  background: oklch(0.97 0 0);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
+  background: var(--code-bg);
+  border: 1px solid var(--blockquote-border); /* Re-used a compatible variable */
+  border-radius: 0.375rem;
   padding: 0.75rem 1rem;
   overflow-x: auto;
   margin: 0.75rem 0;
@@ -391,33 +511,223 @@ a, button {
   padding: 0;
 }
 
-/* Style highlight (annotations) to use Notes yellow */
+/* Highlight (mark) - FIXED */
 .tiptap mark,
 .tiptap .hl,
 .tiptap mark[data-type="highlight"] {
-  background: color-mix(in oklch, var(--notes-yellow) 65%, white);
+  background: var(--highlight-bg);
   color: inherit;
   border-radius: 0.15rem;
   padding: 0 0.05rem;
 }
 
-/* Links */
+/* Links - FIXED */
 .tiptap a {
-  color: var(--notes-yellow);
+  color: var(--link-text);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
-/* Images */
+/* Images & Alignment (OK) */
 .tiptap img {
   max-width: 100%;
   height: auto;
-  border-radius: var(--radius);
+  border-radius: 0.375rem;
 }
-
-/* Alignment */
 .tiptap [style*="text-align:center"] {
   margin-left: auto;
   margin-right: auto;
 }
 
+/* === Tiptap Table Styling === */
+
+/* Basic table styles */
+.tiptap table {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  margin-right: 1rem;
+  overflow: hidden; /* Ensures resizable handles are contained */
+}
+
+.tiptap th,
+.tiptap td {
+  border: 1px solid #d1d1d1; /* Light mode border */
+  padding: 0.5rem 0.75rem;
+  vertical-align: top;
+  position: relative;
+}
+
+.tiptap th {
+  font-weight: bold;
+  background-color: #f4f4f4; /* Light mode header background */
+  text-align: left;
+}
+
+/* Column resizing handles */
+.column-resize-handle {
+  position: absolute;
+  right: -2px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #facc15; /* yellow-400 */
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.tiptap table:hover .column-resize-handle {
+    opacity: 1;
+}
+
+.tiptap .resize-cursor {
+    cursor: col-resize;
+}
+
+/* === Dark Mode Table Styles === */
+.dark .tiptap th,
+.dark .tiptap td {
+  border: 1px solid #4a4a4a; /* Dark mode border */
+}
+
+.dark .tiptap th {
+  background-color: #2a2a2a; /* Dark mode header background */
+}
+
+.night-shift-enabled {
+  /* This filter applies a warm overlay to everything */
+  filter: sepia(0.3) brightness(0.95);
+}
+
+@layer base {
+  :root {
+    /* --- FIX: Wrapped color values in hsl() --- */
+    --color-1: hsl(0 100% 63%);
+    --color-2: hsl(270 100% 63%);
+    --color-3: hsl(210 100% 63%);
+    --color-4: hsl(195 100% 63%);
+    --color-5: hsl(90 100% 63%);
+  }
+}
+
+/* This is the keyframe animation for the rainbow effect */
+@keyframes rainbow {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes color-cycle {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* --- The Main Disco Ball Sphere --- */
+@keyframes rotateDiscoBall {
+  from { transform: rotateX(90deg) rotateZ(0deg); }
+  to { transform: rotateX(90deg) rotateZ(360deg); }
+}
+
+@keyframes rotateDiscoBallMiddle {
+  from { transform: rotateX(90deg) rotateY(0deg); }
+  to { transform: rotateX(90deg) rotateY(-360deg); }
+}
+
+@keyframes reflect {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+@keyframes drop-in {
+  0% { transform: translateY(-300px); }
+  100% { transform: translateY(0); }
+}
+
+.rope {
+  position: absolute;
+  left: 0%;
+  top: -200px;
+  width: 4px;
+  height: 250px;
+  background: linear-gradient(to bottom, #444, #111);
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.disco-ball-container {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  animation: drop-in 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.disco-ball {
+  transform-style: preserve-3d;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  top: 50px;
+  left: -50px;
+  animation: rotateDiscoBall 18s linear infinite;
+  z-index: 2;
+}
+
+.disco-ball-light {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  border-radius: 50%;
+  background-color: white;
+  opacity: 0.2;
+  filter: blur(20px);
+  z-index: 2;
+}
+
+.disco-ball-middle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, #111, #333);
+  position: absolute;
+  transform-style: preserve-3d;
+  animation: rotateDiscoBallMiddle 18s linear infinite;
+}
+
+.square {
+  transform-style: preserve-3d;
+  position: absolute;
+  top: 46px;
+  left: 46px;
+  width: 6px;
+  height: 6px;
+}
+
+/* --- Confetti Effect (Unchanged) --- */
+.confetti-piece {
+  position: absolute;
+  width: 8px;
+  height: 16px;
+  background: #f00;
+  top: -20px;
+  opacity: 0;
+  animation: confetti-fall 5s linear infinite;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(0) rotateZ(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotateZ(360deg);
+    opacity: 0;
+  }
+}

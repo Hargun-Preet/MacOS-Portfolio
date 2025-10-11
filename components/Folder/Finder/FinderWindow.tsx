@@ -77,6 +77,8 @@ export const FinderWindowContent = ({ openWindow, isMaximized }: { openWindow: (
       setSelectedItemId(null);
     }
   };
+  
+  const specialProjectIds = new Set(['project02', 'project08']);
 
   return (
     <div className="flex h-full w-full bg-white text-black" onClick={() => setSelectedItemId(null)}>
@@ -129,27 +131,47 @@ export const FinderWindowContent = ({ openWindow, isMaximized }: { openWindow: (
               "grid gap-1",
               isMaximized ? "grid-cols-12" : "grid-cols-4" // 8 columns when maximized, 4 otherwise
             )}>
-              {currentItems.map((item: File | Folder) => (
-                <div key={item.id} onClick={(e) => {e.stopPropagation(); handleSelectItem(item.id); }} onDoubleClick={() => handleItemDoubleClick(item)} className={cn("flex flex-col items-center text-center p-2 rounded-lg cursor-pointer",
+              {currentItems.map((item: File | Folder) => {
+                const isSpecialProject = specialProjectIds.has(item.id);
+                return (
+                  <div key={item.id} onClick={(e) => {e.stopPropagation(); handleSelectItem(item.id); }} onDoubleClick={() => handleItemDoubleClick(item)} className={cn("flex flex-col items-center text-center p-2 rounded-lg cursor-pointer",
                     selectedItemId === item.id ? "bg-blue-300/50 dark:bg-neutral-500" : "hover:bg-blue-100/50 dark:hover:bg-neutral-600/50"
                 )}
                 
                 >
-                  <img src={item.icon} alt={item.name} className="w-16 h-16 mb-1" />
+                  <img
+                    src={item.icon}
+                    alt={item.name}
+                    className={cn(
+                      "w-16 h-16 mb-1",
+                      isSpecialProject ? "invert dark:invert-0" : ""
+                    )}
+                  />
                   <span className="text-xs">{item.name}</span>
                 </div>
-              ))}
+                )
+              })}
             </div>
           ) : (
             <div className="flex flex-col text-sm dark:border-neutral-600">
-              {currentItems.map((item: File | Folder) => (
-                <div key={item.id} onClick={(e) => {e.stopPropagation(); handleSelectItem(item.id); }} onDoubleClick={() => handleItemDoubleClick(item)}  className={cn("flex items-center gap-2 p-2 rounded-lg hover:bg-blue-100 cursor-pointer border-b border-gray-200",
+              {currentItems.map((item: File | Folder) => {
+                const isSpecialProject = specialProjectIds.has(item.id);
+                return (
+                  <div key={item.id} onClick={(e) => {e.stopPropagation(); handleSelectItem(item.id); }} onDoubleClick={() => handleItemDoubleClick(item)}  className={cn("flex items-center gap-2 p-2 rounded-lg cursor-pointer border-b border-neutral-200 dark:border-neutral-600",
                     selectedItemId === item.id ? "bg-blue-300/50 dark:bg-neutral-500" : "hover:bg-blue-100/50 hover:dark:bg-neutral-600/50"
                 )}>
-                  <img src={item.icon} alt={item.name} className="w-6 h-6" />
+                  <img
+                    src={item.icon}
+                    alt={item.name}
+                    className={cn(
+                      "w-6 h-6",
+                      isSpecialProject ? "invert dark:invert-0" : ""
+                    )}
+                    />
                   <span>{item.name}</span>
                 </div>
-              ))}
+                )
+              })}
             </div>
           )}
         </div>

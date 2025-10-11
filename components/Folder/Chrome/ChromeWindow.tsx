@@ -52,9 +52,9 @@ export const ChromeWindowContent = () => {
   };
 
   return (
-    <div className="flex flex-col h-full w-full bg-white text-black">
+    <div className="flex flex-col h-full w-full bg-white dark:bg-neutral-700 text-black dark:text-white">
       {/* The Address Bar is now decorative, as searches are handled by messages */}
-      <div className="flex items-center gap-2 p-2 bg-gray-100 border-b border-gray-300">
+      <div className="flex items-center gap-2 p-2 bg-gray-100 dark:bg-neutral-700 border-b border-gray-300 dark:border-neutral-600">
         <button onClick={goBack} disabled={historyIndex === 0} className="p-1 rounded-full hover:bg-gray-200 disabled:opacity-50">
           <IconArrowLeft size={16} />
         </button>
@@ -64,15 +64,15 @@ export const ChromeWindowContent = () => {
         <button onClick={reload} className="p-1 rounded-full hover:bg-gray-200">
           <IconRefresh size={16} />
         </button>
-        <div className="relative flex items-center flex-grow bg-white rounded-full pl-7 pr-2 py-1 text-sm border border-gray-300">
-          <IconLock size={15} className="absolute left-2 text-gray-500" />
+        <div className="relative flex items-center flex-grow bg-white dark:bg-neutral-800 rounded-full pl-7 pr-2 py-1 text-sm border border-gray-300 dark:border-neutral-600">
+          <IconLock size={15} className="absolute left-2 text-gray-500 dark:text-neutral-500" />
           {/* Display the current URL from our state */}
           <span className="truncate">https://www.google.com</span>
         </div>
       </div>
 
       {/* --- Iframe for Web Content --- */}
-      <div className="flex-grow border-t border-gray-200">
+      <div className="flex-grow border-t border-gray-200 dark:border-neutral-600">
         <iframe
           key={`${currentUrl}-${iframeKey}`}
           src={currentUrl}
