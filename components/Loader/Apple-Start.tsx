@@ -76,7 +76,7 @@ const StartupLoader: React.FC<StartupLoaderProps> = ({ onFinished }) => {
             {/* <img className="w-24 h-24" src='/assets/icons/logo-white.png' alt='apple-logo' /> */}
             <Image
               className="w-24 h-24" // This still works for styling!
-              src="/assets/icons/logo-white.png"
+              src="/assets/Icons/logo-white.png"
               alt="apple-logo"
               width={150}  // The ACTUAL width of the source file
               height={150} // The ACTUAL height of the source file
