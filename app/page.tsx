@@ -14,9 +14,9 @@ export default function HomePage() {
 
       {/* 2. Conditionally render the StartupLoader on top.
              It will be removed from the DOM after its animation is finished. */}
-      {isBooting && (
+      {/* {isBooting && (
         <StartupLoader onFinished={() => setIsBooting(false)} />
-      )}
+      )} */}
     </main>
   );
 }

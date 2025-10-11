@@ -94,25 +94,25 @@ const mainItems = [
   {
     id: "Finder",
     title: "Finder",
-    iconSrc: "/assets/Icons/Finder.jpg",
+    iconSrc: "/assets/Icons/finder.jpg",
     href: "/finder",
   },
   {
     id: "Google Chrome",
     title: "Google Chrome",
-    iconSrc: "/assets/Icons/Chrome.png",
+    iconSrc: "/assets/Icons/chrome.png",
     href: "/chrome",
   },
   {
     id: "Photos",
     title: "Photos",
-    iconSrc: "/assets/Icons/Photos.png",
+    iconSrc: "/assets/Icons/photos.png",
     href: "/photos",
   },
   {
     id: "System Settings",
     title: "System Settings",
-    iconSrc: "/assets/Icons/Settings.jpg",
+    iconSrc: "/assets/Icons/settings.jpg",
     href: "/settings",
   },
   {
@@ -142,7 +142,7 @@ const mainItems = [
   {
     id: "Spotify",
     title: "Spotify",
-    iconSrc: "/assets/Icons/Spotify.png",
+    iconSrc: "/assets/Icons/spotify.png",
     href: "/Spotify",
   },
   {
@@ -178,7 +178,7 @@ const mainItems = [
   {
     id: "Terminal",
     title: "Terminal",
-    iconSrc: "/assets/Icons/Terminal.jpg",
+    iconSrc: "/assets/Icons/terminal.jpg",
     href: "/terminal",
   },
 ];
@@ -196,7 +196,7 @@ const secondaryItems = [
   {
     id: "Trash",
     title: "Trash",
-    iconSrc: "/assets/Icons/Trash.png",
+    iconSrc: "/assets/Icons/trash.png",
     href: "/trash",
   },
 ];
